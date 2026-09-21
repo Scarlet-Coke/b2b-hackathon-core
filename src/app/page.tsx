@@ -1,69 +1,65 @@
-import Image from "next/image";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Button } from "@/components/ui/button"
 
-export default function Home() {
+export default function Dashboard() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <div className="flex min-h-screen w-full bg-slate-50/50 text-slate-900">
+      {/* 1. 왼쪽 사이드바 메뉴 */}
+      <aside className="hidden w-64 flex-col border-r bg-white p-6 md:flex">
+        <h2 className="text-2xl font-extrabold tracking-tight text-slate-900">Hackathon<span className="text-blue-600">B2B</span></h2>
+        <nav className="mt-8 flex flex-col gap-4">
+          <Button variant="secondary" className="justify-start">Overview Dashboard</Button>
+          <Button variant="ghost" className="justify-start">Smart Contracts</Button>
+          <Button variant="ghost" className="justify-start">API Console</Button>
+        </nav>
+      </aside>
+
+      {/* 2. 메인 콘텐츠 영역 */}
+      <main className="flex-1 p-8">
+        <div className="flex items-center justify-between mb-8">
+          <h1 className="text-3xl font-bold tracking-tight">On-Chain Analytics</h1>
+          {/* 향후 지갑 연결 버튼이 들어갈 자리 */}
+          <Button className="bg-blue-600 hover:bg-blue-700">Connect Wallet</Button>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+
+        {/* 3. 데이터 위젯(카드) 영역 */}
+        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 mb-8">
+          <Card>
+            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+              <CardTitle className="text-sm font-medium">Total Transactions</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="text-2xl font-bold">1,234,567</div>
+              <p className="text-xs text-muted-foreground">+20.1% from last month</p>
+            </CardContent>
+          </Card>
+          
+          <Card>
+            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+              <CardTitle className="text-sm font-medium">Active Wallet Nodes</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="text-2xl font-bold">+2,350</div>
+              <p className="text-xs text-muted-foreground">+180.1% from last month</p>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+              <CardTitle className="text-sm font-medium">Network Status</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="text-2xl font-bold text-green-600">Healthy</div>
+              <p className="text-xs text-muted-foreground">99.99% Uptime</p>
+            </CardContent>
+          </Card>
         </div>
+        
+        {/* 4. 메인 데이터 테이블이 들어갈 빈 공간(Placeholder) */}
+        <Card className="p-6 h-64 flex items-center justify-center border-dashed">
+          <p className="text-muted-foreground">Data Table Placeholder (AI Will Inject Data Here)</p>
+        </Card>
       </main>
     </div>
-  );
+  )
 }
