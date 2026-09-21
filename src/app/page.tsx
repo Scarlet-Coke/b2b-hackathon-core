@@ -1,5 +1,5 @@
-import { Card, CardContent, CardHeader, CardTitle } from "../components/ui/card"
-import { Button } from "../components/ui/button"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Button } from "@/components/ui/button"
 
 export default function Dashboard() {
   return (
@@ -18,7 +18,6 @@ export default function Dashboard() {
       <main className="flex-1 p-8">
         <div className="flex items-center justify-between mb-8">
           <h1 className="text-3xl font-bold tracking-tight">On-Chain Analytics</h1>
-          {/* 향후 지갑 연결 버튼이 들어갈 자리 */}
           <Button className="bg-blue-600 hover:bg-blue-700">Connect Wallet</Button>
         </div>
 
@@ -55,7 +54,7 @@ export default function Dashboard() {
           </Card>
         </div>
         
-        {/* 4. 메인 데이터 테이블이 들어갈 빈 공간(Placeholder) */}
+        {/* 4. 메인 데이터 테이블이 들어갈 빈 공간 */}
         <Card className="p-6 h-64 flex items-center justify-center border-dashed">
           <p className="text-muted-foreground">Data Table Placeholder (AI Will Inject Data Here)</p>
         </Card>
